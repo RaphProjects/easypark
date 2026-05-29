@@ -176,7 +176,7 @@ function formatMoney(value) {
       <button class="ghost" @click="resetDemo"><RotateCcw /> Reinitialiser demo</button>
     </aside>
 
-    <section class="workspace">
+    <section class="workspace quake-camera">
       <div class="ambient fx-one"></div>
       <div class="ambient fx-two"></div>
       <div class="ambient fx-three"></div>

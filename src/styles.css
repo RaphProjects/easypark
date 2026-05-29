@@ -185,6 +185,11 @@ nav a:hover {
   gap: 20px;
   padding: 26px;
   position: relative;
+  transform-origin: center;
+}
+
+.quake-camera {
+  animation: camera-chaos 4.8s ease-in-out infinite;
 }
 
 .ambient {
@@ -1258,6 +1263,35 @@ h2 {
   92% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(2.25) rotate(-34deg);
+  }
+}
+
+@keyframes camera-chaos {
+  0%,
+  53%,
+  100% {
+    filter: saturate(1);
+    transform: scale(1) rotate(0deg);
+  }
+  58% {
+    filter: saturate(1.8) contrast(1.2);
+    transform: scale(1.08) rotate(-0.6deg);
+  }
+  61% {
+    filter: saturate(2.2) contrast(1.35);
+    transform: scale(0.96) rotate(0.8deg);
+  }
+  64% {
+    filter: saturate(2.4) contrast(1.45);
+    transform: scale(1.16) rotate(-1deg);
+  }
+  68% {
+    filter: saturate(1.7) contrast(1.15);
+    transform: scale(1.04) rotate(0.5deg);
+  }
+  76% {
+    filter: saturate(1.25);
+    transform: scale(1.01) rotate(0deg);
   }
 }
 
