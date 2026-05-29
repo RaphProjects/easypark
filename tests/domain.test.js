@@ -31,4 +31,29 @@ const spot = findCompatibleSpot([
 ], 'moto')
 assert.equal(spot.number, 'M01')
 
+const standardSpot = findCompatibleSpot([
+  { number: 'A02', status: 'available', vehicleType: 'voiture', features: ['pmr'] },
+  { number: 'A03', status: 'available', vehicleType: 'voiture', features: ['famille'] },
+  { number: 'A04', status: 'available', vehicleType: 'voiture', features: [] },
+], 'voiture')
+assert.equal(standardSpot.number, 'A04')
+
+const noReservedSpot = findCompatibleSpot([
+  { number: 'A02', status: 'available', vehicleType: 'voiture', features: ['pmr'] },
+  { number: 'A03', status: 'available', vehicleType: 'voiture', features: ['famille'] },
+], 'voiture')
+assert.equal(noReservedSpot, undefined)
+
+const pmrSpot = findCompatibleSpot([
+  { number: 'A02', status: 'available', vehicleType: 'voiture', features: ['pmr'] },
+  { number: 'A04', status: 'available', vehicleType: 'voiture', features: [] },
+], 'voiture', ['pmr'])
+assert.equal(pmrSpot.number, 'A02')
+
+const familySpot = findCompatibleSpot([
+  { number: 'A03', status: 'available', vehicleType: 'voiture', features: ['famille'] },
+  { number: 'A04', status: 'available', vehicleType: 'voiture', features: [] },
+], 'voiture', ['famille'])
+assert.equal(familySpot.number, 'A03')
+
 console.log('Domain tests passed')

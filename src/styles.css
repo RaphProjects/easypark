@@ -290,6 +290,10 @@ h2 {
   width: auto;
 }
 
+.compact-chips {
+  margin-top: -8px;
+}
+
 .ghost {
   background: #e9f0ed;
   color: #18322f;

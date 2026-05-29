@@ -40,8 +40,22 @@ export function findActiveSubscription(subscriptions, plate, at = new Date()) {
   return subscriptions.find((subscription) => normalizePlate(subscription.plate) === normalized && isSubscriptionActive(subscription, at))
 }
 
-export function findCompatibleSpot(spots, vehicleType) {
-  return spots.find((spot) => spot.status === 'available' && spot.vehicleType === vehicleType)
+const RESERVED_FEATURES = ['pmr', 'famille', 'livraison', 'service mairie']
+
+function canUseReservedFeatures(spotFeatures = [], eligibility = []) {
+  return spotFeatures.every((feature) => !RESERVED_FEATURES.includes(feature) || eligibility.includes(feature))
+}
+
+export function findCompatibleSpot(spots, vehicleType, eligibility = []) {
+  const compatibleSpots = spots.filter(
+    (spot) => spot.status === 'available' && spot.vehicleType === vehicleType && canUseReservedFeatures(spot.features, eligibility)
+  )
+
+  return (
+    compatibleSpots.find((spot) => (spot.features || []).some((feature) => eligibility.includes(feature))) ||
+    compatibleSpots.find((spot) => !(spot.features || []).some((feature) => RESERVED_FEATURES.includes(feature))) ||
+    compatibleSpots[0]
+  )
 }
 
 export function seedData() {

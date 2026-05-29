@@ -27,7 +27,7 @@ const statusLabels = {
 }
 
 const filters = reactive({ status: 'all', vehicleType: 'all', feature: 'all', zone: 'all' })
-const entryForm = reactive({ plate: '', vehicleType: 'voiture' })
+const entryForm = reactive({ plate: '', vehicleType: 'voiture', eligibility: [] })
 const exitForm = reactive({ plate: '' })
 const spotForm = reactive(emptySpot())
 const subscriptionForm = reactive(emptySubscription())
@@ -94,6 +94,7 @@ function submitEntry() {
     (session) => `Entree enregistree : ${session.plate} sur la place ${session.spotNumber}.`
   )
   entryForm.plate = ''
+  entryForm.eligibility = []
 }
 
 function submitExit() {
@@ -254,6 +255,12 @@ function formatMoney(value) {
             <select v-model="entryForm.vehicleType"><option v-for="type in VEHICLE_TYPES" :key="type">{{ type }}</option></select>
             <button><LogIn size="18" /> Entree</button>
           </form>
+          <div class="chips compact-chips">
+            <label><input v-model="entryForm.eligibility" type="checkbox" value="pmr" />Carte PMR</label>
+            <label><input v-model="entryForm.eligibility" type="checkbox" value="famille" />Famille</label>
+            <label><input v-model="entryForm.eligibility" type="checkbox" value="livraison" />Livraison</label>
+            <label><input v-model="entryForm.eligibility" type="checkbox" value="service mairie" />Service mairie</label>
+          </div>
           <form class="operation" @submit.prevent="submitExit">
             <input v-model="exitForm.plate" placeholder="Plaque a sortir" required />
             <button><LogOut size="18" /> Sortie</button>

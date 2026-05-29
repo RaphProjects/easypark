@@ -65,14 +65,14 @@ export function removeSpot(id) {
   audit('Place supprimee', spot.number)
 }
 
-export function simulateEntry({ plate, vehicleType }) {
+export function simulateEntry({ plate, vehicleType, eligibility = [] }) {
   const normalizedPlate = normalizePlate(plate)
   if (!normalizedPlate) throw new Error('La plaque est obligatoire.')
   if (state.sessions.some((session) => session.plate === normalizedPlate && session.status === 'active')) {
     throw new Error('Ce vehicule est deja stationne.')
   }
-  const spot = findCompatibleSpot(state.spots, vehicleType)
-  if (!spot) throw new Error('Aucune place compatible disponible.')
+  const spot = findCompatibleSpot(state.spots, vehicleType, eligibility)
+  if (!spot) throw new Error('Aucune place compatible disponible pour ce vehicule et ses droits.')
   const subscription = findActiveSubscription(state.subscriptions, normalizedPlate)
   const session = {
     id: uid('session'),
@@ -86,6 +86,7 @@ export function simulateEntry({ plate, vehicleType }) {
     amount: 0,
     status: 'active',
     subscriptionId: subscription?.id || null,
+    eligibility,
   }
   state.vehicles.unshift({ id: uid('vehicle'), plate: normalizedPlate, vehicleType, ownerName: subscription?.holderName || '' })
   state.sessions.unshift(session)
