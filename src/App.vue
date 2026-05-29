@@ -189,6 +189,10 @@ function formatMoney(value) {
       <div class="explosion explosion-two" aria-hidden="true"></div>
       <div class="mega-explosion mega-one" aria-hidden="true"></div>
       <div class="mega-explosion mega-two" aria-hidden="true"></div>
+      <div class="gif-explosion gif-boom-one" aria-hidden="true"></div>
+      <div class="gif-explosion gif-boom-two" aria-hidden="true"></div>
+      <div class="gif-explosion gif-boom-three" aria-hidden="true"></div>
+      <div class="gif-explosion gif-boom-four" aria-hidden="true"></div>
       <div class="screen-flash" aria-hidden="true"></div>
       <div class="spark-burst" aria-hidden="true">
         <span v-for="index in 18" :key="`spark-${index}`"></span>

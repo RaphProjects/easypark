@@ -20,3 +20,8 @@ L'application utilise Vue + Vite et persiste les donnees de demo dans `localStor
 ## Notes d'architecture
 
 La v1 simule le backend dans `src/store.js` pour rester executable sans PHP/Composer sur cette machine. Les entites et regles metier sont isolees dans `src/domain.js` afin de faciliter une future migration vers une API Laravel.
+
+## Credits visuels
+
+- `public/assets/explosion-pirate-bomb.gif` : OpenGameArt, "Animated bomb explosion", CC0.
+- `public/assets/explosion-mushroom-cloud.gif` : Wikimedia Commons, `Bomba atomica.gif`, CC BY-SA 2.5.
