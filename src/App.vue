@@ -177,6 +177,10 @@ function formatMoney(value) {
     </aside>
 
     <section class="workspace">
+      <div class="ambient fx-one"></div>
+      <div class="ambient fx-two"></div>
+      <div class="ambient fx-three"></div>
+
       <header class="topbar">
         <div>
           <p>Back-office mairie</p>
