@@ -180,6 +180,16 @@ function formatMoney(value) {
       <div class="ambient fx-one"></div>
       <div class="ambient fx-two"></div>
       <div class="ambient fx-three"></div>
+      <div class="lightning bolt-one"></div>
+      <div class="lightning bolt-two"></div>
+      <div class="starfield" aria-hidden="true">
+        <span v-for="index in 28" :key="`star-${index}`" class="shooting-star"></span>
+      </div>
+      <div class="explosion explosion-one" aria-hidden="true"></div>
+      <div class="explosion explosion-two" aria-hidden="true"></div>
+      <div class="spark-burst" aria-hidden="true">
+        <span v-for="index in 18" :key="`spark-${index}`"></span>
+      </div>
 
       <header class="topbar">
         <div>

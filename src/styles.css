@@ -223,6 +223,146 @@ nav a:hover {
   width: 120px;
 }
 
+.lightning {
+  clip-path: polygon(38% 0, 64% 0, 51% 34%, 72% 34%, 30% 100%, 42% 50%, 24% 50%);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 24px rgba(255, 217, 61, 0.9));
+  height: 190px;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  width: 90px;
+  z-index: 0;
+}
+
+.bolt-one {
+  animation: lightning-strike 4.2s ease-in-out infinite;
+  background: linear-gradient(180deg, #ffffff, #fff45c 45%, #00f5ff);
+  right: 9%;
+  top: 4%;
+  transform: rotate(12deg);
+}
+
+.bolt-two {
+  animation: lightning-strike 5.6s ease-in-out infinite 1.1s;
+  background: linear-gradient(180deg, #ffffff, #c77dff 48%, #ff006e);
+  left: 24%;
+  top: 18%;
+  transform: rotate(-18deg) scale(0.82);
+}
+
+.starfield {
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+}
+
+.shooting-star {
+  animation: shoot-star 3.8s linear infinite;
+  background: linear-gradient(90deg, transparent, #ffffff, #ffb703, transparent);
+  border-radius: 999px;
+  box-shadow: 0 0 10px #ffffff, 0 0 24px rgba(255, 183, 3, 0.8);
+  height: 3px;
+  left: -18%;
+  position: absolute;
+  top: calc(var(--star-top, 10) * 1%);
+  transform: rotate(-18deg);
+  width: 120px;
+}
+
+.shooting-star:nth-child(1) { --star-top: 8; animation-delay: 0.1s; animation-duration: 4.1s; }
+.shooting-star:nth-child(2) { --star-top: 16; animation-delay: 1.3s; animation-duration: 3.4s; }
+.shooting-star:nth-child(3) { --star-top: 24; animation-delay: 2.1s; animation-duration: 4.8s; }
+.shooting-star:nth-child(4) { --star-top: 34; animation-delay: 0.7s; animation-duration: 5.2s; }
+.shooting-star:nth-child(5) { --star-top: 43; animation-delay: 1.9s; animation-duration: 3.6s; }
+.shooting-star:nth-child(6) { --star-top: 52; animation-delay: 2.8s; animation-duration: 4.4s; }
+.shooting-star:nth-child(7) { --star-top: 61; animation-delay: 0.4s; animation-duration: 4.7s; }
+.shooting-star:nth-child(8) { --star-top: 70; animation-delay: 1.6s; animation-duration: 3.9s; }
+.shooting-star:nth-child(9) { --star-top: 79; animation-delay: 2.5s; animation-duration: 5.5s; }
+.shooting-star:nth-child(10) { --star-top: 88; animation-delay: 0.9s; animation-duration: 4.2s; }
+.shooting-star:nth-child(n + 11) {
+  animation-delay: calc((var(--i, 1) + 1) * 0.23s);
+  opacity: 0.72;
+  width: 70px;
+}
+
+.explosion {
+  animation: explode 3.7s ease-out infinite;
+  background:
+    conic-gradient(from 0deg, transparent 0 7%, #ff006e 7% 9%, transparent 9% 17%, #ffb703 17% 20%, transparent 20% 32%, #00f5ff 32% 35%, transparent 35% 48%, #ffffff 48% 50%, transparent 50% 66%, #c77dff 66% 69%, transparent 69% 83%, #faff00 83% 86%, transparent 86% 100%);
+  border-radius: 999px;
+  filter: blur(0.2px) drop-shadow(0 0 18px rgba(255, 183, 3, 0.85));
+  height: 180px;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  width: 180px;
+  z-index: 0;
+}
+
+.explosion::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(255, 183, 3, 0.62) 18%, transparent 58%);
+  border-radius: inherit;
+  content: "";
+  inset: 24%;
+  position: absolute;
+}
+
+.explosion-one {
+  right: 24%;
+  top: 28%;
+}
+
+.explosion-two {
+  animation-delay: 1.4s;
+  bottom: 18%;
+  left: 18%;
+  transform: scale(0.72);
+}
+
+.spark-burst {
+  height: 220px;
+  left: 54%;
+  pointer-events: none;
+  position: fixed;
+  top: 8%;
+  width: 220px;
+  z-index: 0;
+}
+
+.spark-burst span {
+  animation: spark-pop 2.6s ease-out infinite;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 0 12px #fff, 0 0 24px #ffb703;
+  height: 8px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: rotate(calc(var(--spark-angle) * 1deg)) translateX(0);
+  width: 8px;
+}
+
+.spark-burst span:nth-child(1) { --spark-angle: 0; animation-delay: 0s; }
+.spark-burst span:nth-child(2) { --spark-angle: 20; animation-delay: .04s; }
+.spark-burst span:nth-child(3) { --spark-angle: 40; animation-delay: .08s; }
+.spark-burst span:nth-child(4) { --spark-angle: 60; animation-delay: .12s; }
+.spark-burst span:nth-child(5) { --spark-angle: 80; animation-delay: .16s; }
+.spark-burst span:nth-child(6) { --spark-angle: 100; animation-delay: .2s; }
+.spark-burst span:nth-child(7) { --spark-angle: 120; animation-delay: .24s; }
+.spark-burst span:nth-child(8) { --spark-angle: 140; animation-delay: .28s; }
+.spark-burst span:nth-child(9) { --spark-angle: 160; animation-delay: .32s; }
+.spark-burst span:nth-child(10) { --spark-angle: 180; animation-delay: .36s; }
+.spark-burst span:nth-child(11) { --spark-angle: 200; animation-delay: .4s; }
+.spark-burst span:nth-child(12) { --spark-angle: 220; animation-delay: .44s; }
+.spark-burst span:nth-child(13) { --spark-angle: 240; animation-delay: .48s; }
+.spark-burst span:nth-child(14) { --spark-angle: 260; animation-delay: .52s; }
+.spark-burst span:nth-child(15) { --spark-angle: 280; animation-delay: .56s; }
+.spark-burst span:nth-child(16) { --spark-angle: 300; animation-delay: .6s; }
+.spark-burst span:nth-child(17) { --spark-angle: 320; animation-delay: .64s; }
+.spark-burst span:nth-child(18) { --spark-angle: 340; animation-delay: .68s; }
+
 .topbar,
 .section-title {
   align-items: center;
@@ -343,6 +483,18 @@ h2 {
   width: 50%;
 }
 
+.panel::after {
+  animation: corner-sparkle 1.8s ease-in-out infinite;
+  background: radial-gradient(circle, #fff 0 18%, #ffb703 19% 38%, transparent 42%);
+  content: "";
+  height: 34px;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 34px;
+}
+
 .filters,
 .actions,
 .operation {
@@ -392,6 +544,7 @@ h2 {
 
 .spot strong {
   font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.95);
 }
 
 .spot small,
@@ -705,6 +858,80 @@ h2 {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes lightning-strike {
+  0%,
+  76%,
+  79%,
+  82%,
+  100% {
+    opacity: 0;
+  }
+  77%,
+  80% {
+    opacity: 1;
+    transform: rotate(12deg) scale(1.08);
+  }
+  81% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes shoot-star {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) rotate(-18deg) scaleX(0.35);
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(140vw) translateY(42vh) rotate(-18deg) scaleX(1);
+  }
+}
+
+@keyframes explode {
+  0%,
+  68% {
+    opacity: 0;
+    transform: scale(0.08) rotate(0deg);
+  }
+  74% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4) rotate(96deg);
+  }
+}
+
+@keyframes spark-pop {
+  0%,
+  56% {
+    opacity: 0;
+    transform: rotate(calc(var(--spark-angle) * 1deg)) translateX(0) scale(0.2);
+  }
+  64% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(calc(var(--spark-angle) * 1deg)) translateX(108px) scale(0.9);
+  }
+}
+
+@keyframes corner-sparkle {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: rotate(0deg) scale(0.65);
+  }
+  50% {
+    opacity: 0.85;
+    transform: rotate(180deg) scale(1.1);
   }
 }
 
