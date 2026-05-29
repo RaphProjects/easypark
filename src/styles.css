@@ -236,6 +236,50 @@ nav a:hover {
   z-index: 1;
 }
 
+.effects-toggle {
+  justify-content: center;
+}
+
+.effects-off *,
+.effects-off *::before,
+.effects-off *::after {
+  animation: none !important;
+  transition-duration: 1ms !important;
+}
+
+.effects-off .ambient,
+.effects-off .lightning,
+.effects-off .starfield,
+.effects-off .explosion,
+.effects-off .mega-explosion,
+.effects-off .gif-explosion,
+.effects-off .screen-flash,
+.effects-off .spark-burst {
+  display: none !important;
+}
+
+.effects-off .sidebar,
+.effects-off .workspace,
+.effects-off .panel,
+.effects-off .metrics article,
+.effects-off .spot,
+.effects-off .row,
+.effects-off button,
+.effects-off input,
+.effects-off select {
+  filter: none !important;
+  transform: none !important;
+}
+
+.effects-off .sidebar {
+  background: #18322f;
+}
+
+.effects-off .panel,
+.effects-off .metrics article {
+  box-shadow: 0 8px 18px rgba(24, 50, 47, 0.08);
+}
+
 .workspace {
   display: grid;
   gap: 20px;

@@ -33,6 +33,7 @@ const spotForm = reactive(emptySpot())
 const subscriptionForm = reactive(emptySubscription())
 const message = ref('')
 const error = ref('')
+const effectsEnabled = ref(localStorage.getItem('easypark-effects-enabled') !== 'false')
 
 function emptySpot() {
   return { id: null, number: '', zone: 'Centre', row: 'Rang A', vehicleType: 'voiture', status: 'available', features: [] }
@@ -153,10 +154,15 @@ function exportInvoices() {
 function formatMoney(value) {
   return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(Number(value || 0))
 }
+
+function toggleEffects() {
+  effectsEnabled.value = !effectsEnabled.value
+  localStorage.setItem('easypark-effects-enabled', String(effectsEnabled.value))
+}
 </script>
 
 <template>
-  <main class="app-shell">
+  <main class="app-shell" :class="{ 'effects-off': !effectsEnabled }">
     <aside class="sidebar">
       <div class="brand">
         <ParkingCircle />
@@ -173,6 +179,9 @@ function formatMoney(value) {
         <a href="#billing"><Banknote /> Facturation</a>
         <a href="#settings"><Settings /> Configuration</a>
       </nav>
+      <button class="ghost effects-toggle" @click="toggleEffects">
+        {{ effectsEnabled ? 'Couper les effets' : 'Rallumer les effets' }}
+      </button>
       <button class="ghost" @click="resetDemo"><RotateCcw /> Reinitialiser demo</button>
     </aside>
 
